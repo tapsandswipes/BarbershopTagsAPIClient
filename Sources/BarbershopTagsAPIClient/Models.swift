@@ -64,12 +64,10 @@ struct TagInfo: Identifiable, Decodable {
         case easy = "easytags"
         case days100 = "100"
     }
-    
-
 }
 
 struct Videos: Decodable {
-    public var videos: [VideoInfo]
+    var videos: [VideoInfo]
 }
 
 public
