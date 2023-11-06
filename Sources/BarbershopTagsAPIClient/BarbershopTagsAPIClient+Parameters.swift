@@ -1,0 +1,99 @@
+import Foundation
+
+
+enum Parameter: String {
+    case tagID = "id" // Int
+
+    case query = "q" // String
+    case maxNumberOfResults = "n" // Int
+    case startIndex = "start" // Int
+    case numberOfParts = "Parts" // Int
+    case style = "Type" // TagInfo.Style
+    case hasLearningTracks = "Learning" // Bool: Yes | No
+    case hasSheetMusic = "SheetMusic" // Bool: Yes | No
+    case collection = "Collection" // TagInfo.Collection
+    case minimumRating = "MinRating" // Int
+    case minimumDownloads = "MinDownloaded" // Int
+    case minimumDate = "Minstamp" // Date: YYYY-MM-DD or YYYY-MM-DD HH:MM:SS
+    case sortedBy = "Sortby" // SortOrder
+    case resultFields = "fldlist" // Comma separeted list of Field
+    case clientName = "client" // String
+    
+    case action = "action" // Always: rate
+    case rating = "rating" // Int: 1...5
+    
+}
+
+protocol ParameterValueProviding {
+    var parameterValue: String { get }
+}
+
+extension Bool: ParameterValueProviding {
+    var parameterValue: String { self ? "Yes" : "No" }
+}
+
+extension Int: ParameterValueProviding {
+    var parameterValue: String { String(self) }
+}
+
+extension String: ParameterValueProviding {
+    var parameterValue: String { self }
+}
+
+extension Array: ParameterValueProviding where Element: ParameterValueProviding {
+    var parameterValue: String {
+        reduce("") { r, e in
+            r + ",\(e.parameterValue)"
+        }
+    }
+}
+
+extension RawRepresentable where RawValue: ParameterValueProviding {
+    var parameterValue: String { rawValue.parameterValue }
+}
+
+extension Date: ParameterValueProviding {
+    var parameterValue: String { self.formatted() }
+}
+
+extension ResponseInfo.SortOrder: ParameterValueProviding {}
+extension ResponseInfo.Field: ParameterValueProviding {}
+extension TagInfo.Style: ParameterValueProviding {}
+extension TagInfo.Collection: ParameterValueProviding {}
+
+
+extension Query {
+    func parameters() -> Parameters? {
+        var parameters: Parameters = [:]
+        
+        term.map { parameters[.query] = $0 }
+        numberOfParts.map { parameters[.numberOfParts] = $0 }
+        style.map { parameters[.style] = $0 }
+        hasLearningTracks.map { parameters[.hasLearningTracks] = $0 }
+        hasSheetMusic.map { parameters[.hasSheetMusic] = $0 }
+        collection.map { parameters[.collection] = $0 }
+        minimumRating.map { parameters[.minimumRating] = $0 }
+        minimumDownloads.map { parameters[.minimumDownloads] = $0 }
+        minimumDate.map { parameters[.minimumDate] = $0 }
+
+        guard !parameters.isEmpty else { return nil }
+        
+        return parameters
+    }
+}
+
+extension ResponseInfo {
+    func parameters() -> Parameters? {
+        var parameters: Parameters = [:]
+        
+        maxNumberOfResults.map { parameters[.maxNumberOfResults] = $0 }
+        startIndex.map { parameters[.startIndex] = $0 }
+        resultFields.map { parameters[.resultFields] = $0 }
+        sortedBy.map { parameters[.sortedBy] = $0 }
+        
+        guard !parameters.isEmpty else { return nil }
+        
+        return parameters
+    }
+}
+

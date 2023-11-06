@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "chainable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tapsandswipes/Chainable.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "a0cdbefad447f5f6e69c2b4d5cd6dc22a98620c9"
+      }
+    },
+    {
+      "identity" : "xmlcoder",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tapsandswipes/XMLCoder.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "03135aa8242568641da8c2e5ef6ac9bf3fed9c7f"
+      }
+    }
+  ],
+  "version" : 2
+}
