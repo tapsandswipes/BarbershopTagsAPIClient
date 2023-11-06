@@ -31,6 +31,7 @@ let package = Package(
             resources: [
                 .copy("tag54.xml"),
                 .copy("tags.xml"),
+                .copy("partial.xml"),
             ]
         ),
     ]

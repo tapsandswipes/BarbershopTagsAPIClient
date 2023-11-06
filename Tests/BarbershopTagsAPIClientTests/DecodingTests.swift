@@ -88,6 +88,20 @@ final class DecodingTests: XCTestCase {
         XCTAssertEqual(key.key, .minor(.flat(.E)))
     }
 
+    func testPartialResponseParsing() throws {
+        let sut = try Data(contentsOf: Bundle.module.url(forResource: "partial", withExtension: "xml")!)
+
+        let decoder = XMLDecoder(removeEmptyElements: true)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.locale = Locale(identifier: "en_US")
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        
+        let result = try decoder.decode(QueryResult.self, from: sut)
+        
+        XCTAssertEqual(result.tags.map(\.id).count, 20)
+        XCTAssertEqual(result.tags.map(\.title).count, 20)
+    }
 }
 
 struct KeyD: Decodable {
