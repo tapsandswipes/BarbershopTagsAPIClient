@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "BarbershopTagsAPIClient",
-    platforms: [.iOS(.v13), .macOS(.v12)],
+    platforms: [.iOS(.v16), .macOS(.v12)],
     products: [
         .library(
             name: "BarbershopTagsAPIClient",
