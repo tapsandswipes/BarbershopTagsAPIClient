@@ -56,6 +56,14 @@ final class BarbershopTagsAPIClientTests: XCTestCase {
         TagsQueryPartialResponse.unregister()
     }
 
+    func testRealDataParsing() async throws {
+        let sut = BarbershopTagsAPIClient(name: "Test Client")
+
+        let tag = try await sut.getTag(id: "31")
+        
+        XCTAssertEqual(tag.id, "31")
+        XCTAssertEqual(tag.title, "After Today")
+    }
 }
 
 
