@@ -15,5 +15,13 @@ final class BarbershopTagsAPIClientTests: XCTestCase {
         XCTAssertEqual(request.url?.query(percentEncoded: false), "Collection=classic")
     }
     
-    
+    func testRateWorngTag() async throws {
+        
+        do {
+            try await client.rateTag(id: "123456", rating: 5)
+            XCTFail()
+        } catch {
+        }
+            
+    }
 }
