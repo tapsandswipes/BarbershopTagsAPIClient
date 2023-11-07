@@ -51,6 +51,6 @@ extension BarbershopTagsAPIClient {
     func performQuery(_ parameters: Parameters) async throws -> QueryResult {
         let data: Data = try await performQuery(parameters)
         
-        return try XMLDecoder(removeEmptyElements: true).decode(QueryResult.self, from: data)
+        return try decoder.decode(QueryResult.self, from: data)
     }
 }

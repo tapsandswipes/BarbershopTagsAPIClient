@@ -35,6 +35,27 @@ final class BarbershopTagsAPIClientTests: XCTestCase {
         
         RateOKResponse.unregister()
     }
+    
+    func testTagsQuery() async throws {
+        let sut = BarbershopTagsAPIClient(name: "TC", session: .init(mockResponder: TagsQueryResponse.self))
+
+        let tags = try await sut.getTags(matching: .init(term: "T"))
+        
+        XCTAssertFalse(tags.tags.isEmpty)
+        
+        TagsQueryResponse.unregister()
+    }
+    
+    func testTagsPartialQuery() async throws {
+        let sut = BarbershopTagsAPIClient(name: "TC", session: .init(mockResponder: TagsQueryPartialResponse.self))
+
+        let tags = try await sut.getTags(matching: .init(term: "T"))
+        
+        XCTAssertFalse(tags.tags.isEmpty)
+        
+        TagsQueryPartialResponse.unregister()
+    }
+
 }
 
 
@@ -50,3 +71,14 @@ enum RateOKResponse: MockURLResponder {
     }
 }
 
+enum TagsQueryResponse: MockURLResponder {
+    static func respond(to request: URLRequest) throws -> Data {
+        try Data(contentsOf: Bundle.module.url(forResource: "tags", withExtension: "xml")!)
+    }
+}
+
+enum TagsQueryPartialResponse: MockURLResponder {
+    static func respond(to request: URLRequest) throws -> Data {
+        try Data(contentsOf: Bundle.module.url(forResource: "partial", withExtension: "xml")!)
+    }
+}
