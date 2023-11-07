@@ -57,7 +57,6 @@ extension Date: ParameterValueProviding {
 }
 
 extension ResponseInfo.SortOrder: ParameterValueProviding {}
-extension ResponseInfo.Field: ParameterValueProviding {}
 extension TagInfo.Style: ParameterValueProviding {}
 extension TagInfo.Collection: ParameterValueProviding {}
 
@@ -94,6 +93,99 @@ extension ResponseInfo {
         guard !parameters.isEmpty else { return nil }
         
         return parameters
+    }
+}
+
+extension ResponseInfo.Field: ParameterValueProviding {
+    var parameterValue: String {
+        switch self {
+        case .id:
+            TagInfo.CodingKeys.id.rawValue
+        case .title:
+            TagInfo.CodingKeys.title.rawValue
+        case .alternateTitle:
+            TagInfo.CodingKeys.alternateTitle.rawValue
+        case .version:
+            TagInfo.CodingKeys.version.rawValue
+        case .key:
+            TagInfo.CodingKeys.key.rawValue
+        case .numberOfVoices:
+            TagInfo.CodingKeys.numberOfVoices.rawValue
+        case .style:
+            TagInfo.CodingKeys.style.rawValue
+        case .recordingMethod:
+            TagInfo.CodingKeys.recordingMethod.rawValue
+        case .youTubeID:
+            TagInfo.CodingKeys.youTubeID.rawValue
+        case .notes:
+            TagInfo.CodingKeys.notes.rawValue
+        case .arranger:
+            TagInfo.CodingKeys.arranger.rawValue
+        case .arrangerWebsite:
+            TagInfo.CodingKeys.arrangerWebsite.rawValue
+        case .arrangedYear:
+            TagInfo.CodingKeys.arrangeYear.rawValue
+        case .sungBy:
+            TagInfo.CodingKeys.sungBy.rawValue
+        case .singerWebsite:
+            TagInfo.CodingKeys.singerWebsite.rawValue
+        case .sungYear:
+            TagInfo.CodingKeys.sungYear.rawValue
+        case .quartet:
+            TagInfo.CodingKeys.quartet.rawValue
+        case .quartetWebsite:
+            TagInfo.CodingKeys.quartetWebsite.rawValue
+        case .teacher:
+            TagInfo.CodingKeys.teacher.rawValue
+        case .teacherWebsite:
+            TagInfo.CodingKeys.teacherWebsite.rawValue
+        case .provider:
+            TagInfo.CodingKeys.provider.rawValue
+        case .providerWebsite:
+            TagInfo.CodingKeys.providerWebsite.rawValue
+        case .postDate:
+            TagInfo.CodingKeys.postDate.rawValue
+        case .classicID:
+            TagInfo.CodingKeys.classicID.rawValue
+        case .collection:
+            TagInfo.CodingKeys.collection.rawValue
+        case .averageRating:
+            TagInfo.CodingKeys.averageRating.rawValue
+        case .numberOrRatings:
+            TagInfo.CodingKeys.numberOrRatings.rawValue
+        case .numberOfDownloads:
+            TagInfo.CodingKeys.numberOfDownloads.rawValue
+        case .updateDate:
+            TagInfo.CodingKeys.updateDate.rawValue
+        case .sheetMusic:
+            TagInfo.CodingKeys.sheetMusic.rawValue
+        case .alternateSheetMusic:
+            TagInfo.CodingKeys.alternateSheetMusic.rawValue
+        case .notation:
+            TagInfo.CodingKeys.notation.rawValue
+        case .lyrics:
+            TagInfo.CodingKeys.lyrics.rawValue
+        case .allVoices:
+            TagInfo.CodingKeys.allVoices.rawValue
+        case .bassVoice:
+            TagInfo.CodingKeys.bassVoice.rawValue
+        case .bariVoice:
+            TagInfo.CodingKeys.bariVoice.rawValue
+        case .leadVoice:
+            TagInfo.CodingKeys.leadVoice.rawValue
+        case .tenorVoice:
+            TagInfo.CodingKeys.tenorVoice.rawValue
+        case .other1Voice:
+            TagInfo.CodingKeys.other1Voice.rawValue
+        case .other2Voice:
+            TagInfo.CodingKeys.other2Voice.rawValue
+        case .other3Voice:
+            TagInfo.CodingKeys.other3Voice.rawValue
+        case .other4Voice:
+            TagInfo.CodingKeys.other4Voice.rawValue
+        case .videos:
+            TagInfo.CodingKeys._videos.rawValue
+        }
     }
 }
 

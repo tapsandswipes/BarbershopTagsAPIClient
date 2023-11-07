@@ -2,7 +2,6 @@ import Foundation
 
 public
 struct TagInfo: Identifiable, Decodable {
-    var index: Int
     public var id: String
     public var title: String?
     public var alternateTitle: String?
@@ -46,6 +45,7 @@ struct TagInfo: Identifiable, Decodable {
     public var other3Voice: URL?
     public var other4Voice: URL?
     public var videos: [VideoInfo]? { _videos?.videos }
+    var index: Int
     var _videos: Videos?
     
     public

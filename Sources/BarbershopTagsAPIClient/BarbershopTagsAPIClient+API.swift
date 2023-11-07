@@ -117,49 +117,49 @@ extension ResponseInfo {
     }
 
     public
-    enum Field: String {
-        case id = "id"
-        case title = "Title"
-        case alternateTitle = "AltTitle"
-        case version = "Version"
-        case key = "WritKey"
-        case numberOfVoices = "Parts"
-        case style = "Type"
-        case recordingMethod = "Recording"
-        case youTubeID = "TeachVid"
-        case notes = "Notes"
-        case arranger = "Arrenger"
-        case arrangerWebsite = "ArrWebsite"
-        case arrangedYear = "Arranged"
-        case sungBy = "SungBy"
-        case singerWebsite = "SungWebsite"
-        case sungYear = "SungYear"
-        case quartet = "Quartet"
-        case quartetWebsite = "QWebsite"
-        case teacher = "Teacher"
-        case teacherWebsite = "TWebsite"
-        case provider = "Provider"
-        case providerWebsite = "ProvWebsite"
-        case postDate = "Posted"
-        case classicID = "Classic"
-        case collection = "Collection"
-        case averageRating = "Rating"
-        case numberOrRatings = "RatingCount"
-        case numberOfDownloads = "Downloaded"
-        case updateDate = "stamp"
-        case sheetMusic = "SheetMusic"
-        case alternateSheetMusic = "SheetMusicAlt"
-        case notation = "Notation"
-        case lyrics = "Lyrics"
-        case allVoices = "AllParts"
-        case bassVoice = "Bass"
-        case bariVoice = "Bari"
-        case leadVoice = "Lead"
-        case tenorVoice = "Tenor"
-        case other1Voice = "Other1"
-        case other2Voice = "Other2"
-        case other3Voice = "Other3"
-        case other4Voice = "Other4"
-        case videos = "videos"
+    enum Field {
+        case id
+        case title
+        case alternateTitle
+        case version
+        case key
+        case numberOfVoices
+        case style
+        case recordingMethod
+        case youTubeID
+        case notes
+        case arranger
+        case arrangerWebsite
+        case arrangedYear
+        case sungBy
+        case singerWebsite
+        case sungYear
+        case quartet
+        case quartetWebsite
+        case teacher
+        case teacherWebsite
+        case provider
+        case providerWebsite
+        case postDate
+        case classicID
+        case collection
+        case averageRating
+        case numberOrRatings
+        case numberOfDownloads
+        case updateDate
+        case sheetMusic
+        case alternateSheetMusic
+        case notation
+        case lyrics
+        case allVoices
+        case bassVoice
+        case bariVoice
+        case leadVoice
+        case tenorVoice
+        case other1Voice
+        case other2Voice
+        case other3Voice
+        case other4Voice
+        case videos
     }
 }
