@@ -29,11 +29,7 @@ extension BarbershopTagsAPIClient {
     func rateTag(id: TagInfo.ID, rating: Int) async throws {
         let parameters: Parameters = [.action: "rate", .tagID: id, .rating: rating]
 
-        let r: Data = try await performQuery(parameters)
-        
-        let s = String(decoding: r, as: UTF8.self)
-        
-        guard !s.isEmpty else { throw Error.badResponse }
+        let s: String = try await performQuery(parameters)
         
         if s != "ok" {
             throw Error.tagDoesNotExtist

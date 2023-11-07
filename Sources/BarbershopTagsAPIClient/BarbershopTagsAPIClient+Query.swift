@@ -53,4 +53,14 @@ extension BarbershopTagsAPIClient {
         
         return try decoder.decode(QueryResult.self, from: data)
     }
+
+    func performQuery(_ parameters: Parameters) async throws -> String {
+        let data: Data = try await performQuery(parameters)
+
+        let string = String(decoding: data, as: UTF8.self)
+        
+        guard !string.isEmpty else { throw Error.badResponse }
+        
+        return string
+    }    
 }
