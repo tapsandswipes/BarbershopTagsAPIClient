@@ -1,7 +1,7 @@
 import Foundation
 
 public
-struct TagInfo: Identifiable, Decodable {
+struct TagInfo: Identifiable, Decodable, Sendable {
     public var id: String
     public var title: String?
     public var alternateTitle: String?
@@ -49,7 +49,7 @@ struct TagInfo: Identifiable, Decodable {
     var _videos: Videos?
     
     public
-    enum Style: String, Decodable {
+    enum Style: String, Decodable, Sendable {
         case barbershop = "Barbershop"
         case sweetAdelines = "Sweet Adelines"
         case SATB = "SATB"
@@ -59,19 +59,19 @@ struct TagInfo: Identifiable, Decodable {
     }
     
     public
-    enum Collection: String, Decodable {
+    enum Collection: String, Decodable, Sendable {
         case classic = "classic"
         case easy = "easytags"
         case days100 = "100"
     }
 }
 
-struct Videos: Decodable {
+struct Videos: Decodable, Sendable {
     var videos: [VideoInfo]
 }
 
 public
-struct VideoInfo: Identifiable, Decodable {
+struct VideoInfo: Identifiable, Decodable, Sendable {
     public var id: String
     public var desc: String?
     public var key: Key?
@@ -83,13 +83,13 @@ struct VideoInfo: Identifiable, Decodable {
 }
 
 public
-enum Key: Decodable, Equatable {
+enum Key: Decodable, Equatable, Sendable {
     case major(Note)
     case minor(Note)
 }
 
 public
-indirect enum Note: Decodable, Equatable {
+indirect enum Note: Decodable, Equatable, Sendable {
     case C
     case D
     case E

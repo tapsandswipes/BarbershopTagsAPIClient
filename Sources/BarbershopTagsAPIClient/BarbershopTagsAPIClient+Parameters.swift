@@ -1,7 +1,7 @@
 import Foundation
 
 
-enum Parameter: String {
+enum Parameter: String, Sendable {
     case tagID = "id" // Int
 
     case query = "q" // String

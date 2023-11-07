@@ -42,7 +42,7 @@ extension BarbershopTagsAPIClient {
 }
 
 public
-struct Query {
+struct Query: Sendable {
     var term: String?
     var numberOfParts: Int?
     var style: TagInfo.Style?
@@ -77,15 +77,15 @@ struct Query {
 }
 
 public
-struct QueryResult: Decodable {
-    public var available: Int
+struct QueryResult: Decodable, Sendable {
+    public let available: Int
     public var lastIndex: Int { tags.last?.index ?? 0}
-    public var tags: [TagInfo]
+    public let tags: [TagInfo]
 }
 
 
 public
-struct ResponseInfo {
+struct ResponseInfo: Sendable {
     var maxNumberOfResults: Int?
     var startIndex: Int?
     var resultFields: [Field]?
@@ -107,7 +107,7 @@ struct ResponseInfo {
 
 extension ResponseInfo {
     public
-    enum SortOrder: String {
+    enum SortOrder: String, Sendable {
         case title = "Title"
         case datePosted = "Posted"
         case dateUpdated = "stamp"
@@ -117,7 +117,7 @@ extension ResponseInfo {
     }
 
     public
-    enum Field {
+    enum Field: Sendable {
         case id
         case title
         case alternateTitle
