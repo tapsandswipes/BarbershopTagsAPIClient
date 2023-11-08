@@ -3,8 +3,7 @@ import XMLCoder
 import Chainable
 
 
-public
-final class BarbershopTagsAPIClient {
+open class BarbershopTagsAPIClient {
     
     public enum Error: Swift.Error {
         case malformedQuery
