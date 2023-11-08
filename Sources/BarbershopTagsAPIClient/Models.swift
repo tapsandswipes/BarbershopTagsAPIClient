@@ -2,7 +2,7 @@ import Foundation
 
 public
 struct TagInfo: Identifiable, Decodable, Sendable {
-    public var id: String
+    public var id: Int
     public var title: String?
     public var alternateTitle: String?
     public var version: String?
@@ -72,7 +72,7 @@ struct Videos: Decodable, Sendable {
 
 public
 struct VideoInfo: Identifiable, Decodable, Sendable {
-    public var id: String
+    public var id: Int
     public var desc: String?
     public var key: Key?
     public var isMultiTrack: Bool = false

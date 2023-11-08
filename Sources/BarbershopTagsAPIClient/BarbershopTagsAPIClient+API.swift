@@ -104,6 +104,7 @@ struct ResponseInfo: Sendable {
 extension ResponseInfo {
     public
     enum SortOrder: String, Sendable {
+        case id = "id"
         case title = "Title"
         case datePosted = "Posted"
         case dateUpdated = "stamp"

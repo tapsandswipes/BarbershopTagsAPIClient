@@ -16,7 +16,7 @@ final class DecodingTests: XCTestCase {
         
         let tag = try decoder.decode(TagInfo.self, from: sut)
         
-        XCTAssertEqual(tag.id, "54")
+        XCTAssertEqual(tag.id, 54)
         XCTAssertEqual(tag.key, Key.major(.flat(.B)))
         XCTAssertEqual(tag.numberOfVoices, 4)
         XCTAssertEqual(tag.style, .barbershop)
@@ -56,7 +56,7 @@ final class DecodingTests: XCTestCase {
         decoder.dateDecodingStrategy = .formatted(formatter)
         let video = try decoder.decode(VideoInfo.self, from: sut)
         
-        XCTAssertEqual(video.id, "766")
+        XCTAssertEqual(video.id, 766)
         XCTAssertEqual(video.key, Key.major(.flat(.E)))
     }
     

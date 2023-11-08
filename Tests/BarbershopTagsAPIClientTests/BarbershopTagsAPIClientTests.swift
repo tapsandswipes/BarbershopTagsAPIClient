@@ -20,7 +20,7 @@ final class BarbershopTagsAPIClientTests: XCTestCase {
         let sut = BarbershopTagsAPIClient(name: "TC", session: .init(mockResponder: RateWrongResponse.self))
         
         do {
-            try await sut.rateTag(id: "123456", rating: 5)
+            try await sut.rateTag(id: 123456, rating: 5)
             XCTFail()
         } catch {
         }
@@ -31,7 +31,7 @@ final class BarbershopTagsAPIClientTests: XCTestCase {
     func testRateTagOK() async throws {
         let sut = BarbershopTagsAPIClient(name: "TC", session: .init(mockResponder: RateOKResponse.self))
 
-        try await sut.rateTag(id: "123456", rating: 5)
+        try await sut.rateTag(id: 123456, rating: 5)
         
         RateOKResponse.unregister()
     }
@@ -59,9 +59,9 @@ final class BarbershopTagsAPIClientTests: XCTestCase {
     func testRealDataParsing() async throws {
         let sut = BarbershopTagsAPIClient(name: "Test Client")
 
-        let tag = try await sut.getTag(id: "31")
+        let tag = try await sut.getTag(id: 31)
         
-        XCTAssertEqual(tag.id, "31")
+        XCTAssertEqual(tag.id, 31)
         XCTAssertEqual(tag.title, "After Today")
     }
 }
