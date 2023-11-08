@@ -27,7 +27,7 @@ extension BarbershopTagsAPIClient {
     
     func getRequest(from parameters: Parameters) throws -> URLRequest {
         guard 
-            let url = URL(string: "http://www.barbershoptags.com/api.php"),
+            let url = URL(string: "https://www.barbershoptags.com/api.php"),
             var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         else { throw Error.malformedURL }
         
