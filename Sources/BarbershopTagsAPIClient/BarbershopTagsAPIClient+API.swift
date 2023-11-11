@@ -77,6 +77,11 @@ struct QueryResult: Decodable, Sendable {
     public let available: Int
     public var lastIndex: Int { tags.last?.index ?? 0}
     public let tags: [TagInfo]
+
+    public init(available: Int, tags: [TagInfo]) {
+        self.available = available
+        self.tags = tags
+    }
 }
 
 
