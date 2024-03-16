@@ -16,7 +16,9 @@ let client = BarbershopTagsAPIClient(name: "myApp")
 then perfom a query with the `getTags` method:
 
 ```swift
-let result = try await client.getTags(query: .init(term: "love me"), respone: .init(resultFields: [.title, …]))
+let query = Query(term: "love you")
+let response = ResponseInfo(resultFields: [.title, …])
+let result = try await client.getTags(query: query, respone: response)
 
 print("Number of tags matching query: \(result.available)")
 for tag in result.tags {
