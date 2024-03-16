@@ -16,7 +16,7 @@ let characterEntities : [String: Character] = [
 ]
 
 extension String {
-    public func replacingCharacterEntities() -> String {
+    func replacingCharacterEntities() -> String {
         func unicodeScalar(for numericCharacterEntity: String) -> Unicode.Scalar? {
             var unicodeString = ""
             for character in numericCharacterEntity {
