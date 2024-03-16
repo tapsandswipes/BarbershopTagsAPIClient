@@ -24,7 +24,8 @@ for tag in result.tags {
     print("Tag title: \(tag.title)")
 }
 ```
-
+See [documentation](https://tapsandswipes.github.io/BarbershopTagsAPIClient/documentation/barbershoptagsapiclient/) for more options.
+ 
 ## Instalation
 
 You can use the [Swift Package Manager](https://github.com/apple/swift-package-manager) by declaring **BarbershopTagsAPIClient** as a dependency in your `Package.swift` file:
