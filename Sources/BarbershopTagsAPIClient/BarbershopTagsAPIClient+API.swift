@@ -2,7 +2,7 @@ import Foundation
 
 public
 extension BarbershopTagsAPIClient {
-    /// MAke a call to the server to search for tags
+    /// Make a call to the server to search for tags
     /// - Parameters:
     ///   - query: object with the query to perform
     ///   - info: type of response to get
@@ -161,7 +161,7 @@ extension ResponseInfo {
 
     /// Available fields for each tag. 
     public
-    enum Field: Sendable {
+    enum Field: Sendable, CaseIterable {
         case id
         case title
         case alternateTitle

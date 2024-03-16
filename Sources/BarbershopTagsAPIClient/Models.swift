@@ -94,6 +94,7 @@ struct TagInfo: Identifiable, Hashable, Decodable, Sendable {
     var index: Int
     var _videos: Videos?
     
+    /// Styles a tag can be arranged in
     public
     enum Style: String, Hashable, Decodable, Sendable {
         case barbershop = "Barbershop"
@@ -104,6 +105,7 @@ struct TagInfo: Identifiable, Hashable, Decodable, Sendable {
         case otherMixed = "Other mixed"
     }
     
+    /// Collections where a tag can be classified in
     public
     enum Collection: String, Hashable, Decodable, Sendable {
         case classic = "classic"
