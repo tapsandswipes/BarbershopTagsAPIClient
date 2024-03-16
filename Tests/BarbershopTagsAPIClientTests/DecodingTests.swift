@@ -27,6 +27,7 @@ final class DecodingTests: XCTestCase {
         XCTAssertEqual(tag.videos?.count, 3)
         XCTAssertNotNil(tag.sheetMusic)
         XCTAssertEqual(tag.sheetMusic, URL(string: "https://www.barbershoptags.com/dbaction.php?action=DownloadFile&dbase=tags&id=54&fldname=SheetMusic"))
+        XCTAssertEqual(tag.averageRating, 3.4019)
     }
     
     func testDecodingTags() throws {
