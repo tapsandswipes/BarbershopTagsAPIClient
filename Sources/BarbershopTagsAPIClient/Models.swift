@@ -73,21 +73,21 @@ struct TagInfo: Identifiable, Hashable, Decodable, Sendable {
     public var lyrics: String?
     /// URLs of each of the tag's learning tracks with all voices
     public var allVoices: URL?
-    /// /// URLs of the tag's learning tracks with bass voice
+    /// URLs of the tag's learning tracks with bass voice
     public var bassVoice: URL?
-    /// /// URLs of the tag's learning tracks with baritone voice
+    /// URLs of the tag's learning tracks with baritone voice
     public var bariVoice: URL?
-    /// /// URLs of the tag's learning tracks with lead voice
+    /// URLs of the tag's learning tracks with lead voice
     public var leadVoice: URL?
-    /// /// URLs of the tag's learning tracks with tenor voice
+    /// URLs of the tag's learning tracks with tenor voice
     public var tenorVoice: URL?
-    /// /// URLs of the tag's learning tracks with other voce 1
+    /// URLs of the tag's learning tracks with other voce 1
     public var other1Voice: URL?
-    /// /// /// URLs of the tag's learning tracks with other voce 2
+    /// URLs of the tag's learning tracks with other voce 2
     public var other2Voice: URL?
-    /// /// /// URLs of the tag's learning tracks with other voce 3
+    /// URLs of the tag's learning tracks with other voce 3
     public var other3Voice: URL?
-    /// /// /// URLs of the tag's learning tracks with other voce 4
+    /// URLs of the tag's learning tracks with other voce 4
     public var other4Voice: URL?
     /// Array of tag videos, arranged in descending order of the date the video was added to BarbershopTags.com
     public var videos: [VideoInfo]? { _videos?.videos }
