@@ -13,7 +13,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
         .package(url: "https://github.com/tapsandswipes/XMLCoder.git", from: "0.17.0"),
-        .package(url: "https://github.com/tapsandswipes/Chainable", from: "1.0.0"),
+        .package(url: "https://github.com/tapsandswipes/Chainable.git", from: "1.0.0"),
     ],
     targets: [
         .target(
