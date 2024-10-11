@@ -33,6 +33,8 @@ let package = Package(
                 .copy("tag54.xml"),
                 .copy("tags.xml"),
                 .copy("partial.xml"),
+                .copy("leaves.xml"),
+                .copy("tag5846.xml"),
             ]
         ),
     ]

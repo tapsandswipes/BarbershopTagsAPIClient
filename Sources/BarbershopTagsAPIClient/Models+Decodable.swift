@@ -15,7 +15,7 @@ extension TagInfo {
         case alternateTitle = "AltTitle"
         case version = "Version"
         case key = "WritKey"
-        case numberOfVoices = "Parts"
+        case _parts = "Parts"
         case style = "Type"
         case recordingMethod = "Recording"
         case youTubeID = "TeachVid"

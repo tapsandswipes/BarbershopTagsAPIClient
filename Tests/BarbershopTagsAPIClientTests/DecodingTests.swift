@@ -103,6 +103,39 @@ final class DecodingTests: XCTestCase {
         XCTAssertEqual(result.tags.map(\.id).count, 20)
         XCTAssertEqual(result.tags.map(\.title).count, 20)
     }
+    
+    func testLeavesQueryResult() throws {
+        let sut = try Data(contentsOf: Bundle.module.url(forResource: "leaves", withExtension: "xml")!)
+
+        let decoder = XMLDecoder(removeEmptyElements: true)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.locale = Locale(identifier: "en_US")
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        
+        let result = try decoder.decode(QueryResult.self, from: sut)
+
+        XCTAssertEqual(result.tags.map(\.id).count, 26)
+        XCTAssertEqual(result.tags.map(\.title).count, 26)
+    }
+    
+    func testDecodingFailingTagInfo() throws {
+        let sut = try Data(contentsOf: Bundle.module.url(forResource: "tag5846", withExtension: "xml")!)
+        
+        let decoder = XMLDecoder(removeEmptyElements: true)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.locale = Locale(identifier: "en_US")
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        
+        let tag = try decoder.decode(TagInfo.self, from: sut)
+        
+        XCTAssertEqual(tag.id, 5846)
+        XCTAssertEqual(tag.key, Key.major(.flat(.A)))
+        XCTAssertEqual(tag._parts, "other")
+        XCTAssertNil(tag.numberOfVoices)
+    }
+
 }
 
 struct KeyD: Decodable {

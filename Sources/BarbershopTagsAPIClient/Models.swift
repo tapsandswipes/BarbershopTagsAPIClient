@@ -15,7 +15,7 @@ struct TagInfo: Identifiable, Hashable, Decodable, Sendable {
     /// The key the tag was written in
     public var key: Key?
     /// The number of voice parts the tag was written for
-    public var numberOfVoices: Int?
+    public var numberOfVoices: Int? { _parts.flatMap { Int($0)} }
     /// Either "Barbershop", "Sweet Adelines", "SATB", "Other male", "Other female" or "Other mixed"
     public var style: Style?
     /// The method by which the learning tracks (if any) were recorded
@@ -93,6 +93,7 @@ struct TagInfo: Identifiable, Hashable, Decodable, Sendable {
     public var videos: [VideoInfo]? { _videos?.videos }
     var index: Int
     var _videos: Videos?
+    var _parts: String?
     
     /// Styles a tag can be arranged in
     public

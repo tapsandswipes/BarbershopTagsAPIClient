@@ -64,6 +64,35 @@ final class BarbershopTagsAPIClientTests: XCTestCase {
         XCTAssertEqual(tag.id, 31)
         XCTAssertEqual(tag.title, "After Today")
     }
+    
+    func testSearchOneTag() async throws {
+        let sut = BarbershopTagsAPIClient(name: "Test Client")
+        
+        let tags = try await sut.getTags(
+            matching: .init(term: "Leaves"),
+            respone: .init(
+                maxNumberOfResults: 40,
+                resultFields: [
+                    .id,
+                    .title,
+                    .classicID,
+                    .key,
+                    .collection,
+                    .numberOfVoices,
+                    .allVoices,
+                    .bassVoice,
+                    .bariVoice,
+                    .leadVoice,
+                    .tenorVoice,
+                    .lyrics,
+                    .sheetMusic,
+                    .alternateSheetMusic,
+                ]
+            )
+        )
+        
+        XCTAssertFalse(tags.tags.isEmpty)
+    }
 }
 
 

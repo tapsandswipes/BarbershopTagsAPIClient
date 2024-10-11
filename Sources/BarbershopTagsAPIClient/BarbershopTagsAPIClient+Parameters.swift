@@ -110,7 +110,7 @@ extension ResponseInfo.Field: ParameterValueProviding {
         case .key:
             TagInfo.CodingKeys.key.rawValue
         case .numberOfVoices:
-            TagInfo.CodingKeys.numberOfVoices.rawValue
+            TagInfo.CodingKeys._parts.rawValue
         case .style:
             TagInfo.CodingKeys.style.rawValue
         case .recordingMethod:
