@@ -38,5 +38,8 @@ open class BarbershopTagsAPIClient {
     }
 }
 
-
+#if swift(>=6.0)
+extension XMLDecoder: @retroactive Chainable {}
+#else
 extension XMLDecoder: Chainable {}
+#endif
