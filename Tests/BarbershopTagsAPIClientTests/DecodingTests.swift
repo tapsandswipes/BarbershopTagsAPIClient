@@ -21,6 +21,8 @@ final class DecodingTests: XCTestCase {
         XCTAssertEqual(tag.numberOfVoices, 4)
         XCTAssertEqual(tag.style, .barbershop)
         XCTAssertEqual(tag.youTubeID, "y6eX9UzdJZo")
+        XCTAssertEqual(tag.arranger, "Joe Liles")
+        XCTAssertEqual(tag.recordingFormat, .channelSplit)
         XCTAssertEqual(tag.arrangeYear, 1983)
         XCTAssertNotNil(tag.quartetWebsite)
         XCTAssertEqual(tag.quartetWebsite, URL(string: "http://www.vocalharmonies.com"))

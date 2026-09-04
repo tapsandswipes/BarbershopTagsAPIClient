@@ -105,6 +105,23 @@ struct TagInfo: Identifiable, Hashable, Decodable, Sendable {
         case otherFemale = "Other female"
         case otherMixed = "Other mixed"
     }
+
+    /// How the learning tracks were recorded
+    public
+    enum RecordingFormat: String, CaseIterable, Hashable, Sendable {
+        /// Each part file contains only that part
+        case singlePart = "single part only"
+        /// The featured part on one stereo channel, the other parts on the other
+        case channelSplit = "stereo - one part on one side, the other parts on the other side"
+        /// A full mix with the featured part louder than the others
+        case partPredominant = "part predominant - one part louder, other parts quieter"
+    }
+
+    /// Typed view over ``recordingMethod``; nil when the tag has no
+    /// learning tracks or uses an unrecognized description.
+    public var recordingFormat: RecordingFormat? {
+        recordingMethod.flatMap(RecordingFormat.init(rawValue:))
+    }
     
     /// Collections where a tag can be classified in
     public

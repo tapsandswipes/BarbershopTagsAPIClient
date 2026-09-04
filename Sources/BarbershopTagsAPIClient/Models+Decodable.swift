@@ -20,7 +20,7 @@ extension TagInfo {
         case recordingMethod = "Recording"
         case youTubeID = "TeachVid"
         case notes = "Notes"
-        case arranger = "Arrenger"
+        case arranger = "Arranger"
         case arrangerWebsite = "ArrWebsite"
         case arrangeYear = "Arranged"
         case sungBy = "SungBy"
