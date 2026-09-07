@@ -75,6 +75,15 @@ extension VideoInfo {
     }
 }
 
+extension TagInfo.Style {
+    public init(from decoder: Decoder) throws {
+        let raw = try decoder.singleValueContainer().decode(String.self)
+        // Lenient: the site occasionally renames or adds style labels;
+        // an unrecognized value must not fail the entire tag response.
+        self = TagInfo.Style(rawValue: raw.replacingCharacterEntities()) ?? .unknown
+    }
+}
+
 extension Key {
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()

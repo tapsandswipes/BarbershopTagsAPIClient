@@ -100,10 +100,15 @@ struct TagInfo: Identifiable, Hashable, Decodable, Sendable {
     enum Style: String, Hashable, Decodable, Sendable {
         case barbershop = "Barbershop"
         case sweetAdelines = "Sweet Adelines"
+        case femaleBarbershop = "Female Barbershop (incl. SAI, HI, etc)"
         case SATB = "SATB"
         case otherMale = "Other male"
         case otherFemale = "Other female"
         case otherMixed = "Other mixed"
+        /// The site added a style label this client version doesn't know.
+        /// Decoding maps unrecognized values here instead of failing the
+        /// whole response.
+        case unknown = "Unknown"
     }
 
     /// How the learning tracks were recorded
