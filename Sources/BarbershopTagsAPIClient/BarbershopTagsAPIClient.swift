@@ -1,6 +1,5 @@
 import Foundation
 import XMLCoder
-import Chainable
 
 
 /// Client class to make queries to barbershoptags.com
@@ -30,16 +29,17 @@ open class BarbershopTagsAPIClient {
     public let clientName: String
     
     let session: URLSession
-    let decoder = XMLDecoder(removeEmptyElements: true).then {
-        $0.dateDecodingStrategy = .formatted(DateFormatter().then {
-            $0.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            $0.locale = Locale(identifier: "en_US")
-        })
+
+    var decoder: XMLDecoder {
+        let decoder = XMLDecoder(removeEmptyElements: true)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.locale = Locale(identifier: "en_US")
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        return decoder
     }
 }
 
-#if swift(>=6.0)
-extension XMLDecoder: @retroactive Chainable {}
-#else
-extension XMLDecoder: Chainable {}
-#endif
+// All stored state is immutable and Sendable (`clientName`, `session`);
+// the XML decoder is built per use.
+extension BarbershopTagsAPIClient: @unchecked Sendable {}

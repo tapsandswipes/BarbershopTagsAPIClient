@@ -7,7 +7,7 @@ extension BarbershopTagsAPIClient {
     ///   - query: object with the query to perform
     ///   - info: type of response to get
     /// - Returns: The result object with the response from the server
-    func getTags(matching query: Query, respone info: ResponseInfo? = nil) async throws -> QueryResult {
+    func getTags(matching query: Query, response info: ResponseInfo? = nil) async throws -> QueryResult {
         guard var parameters = query.parameters() else { throw Error.malformedQuery }
         
         if let other = info?.parameters() {
@@ -15,6 +15,11 @@ extension BarbershopTagsAPIClient {
         }
         
         return try await performQuery(parameters)
+    }
+
+    @available(*, deprecated, renamed: "getTags(matching:response:)")
+    func getTags(matching query: Query, respone info: ResponseInfo?) async throws -> QueryResult {
+        try await getTags(matching: query, response: info)
     }
     
     /// Get a tag by its id
@@ -157,6 +162,9 @@ extension ResponseInfo {
         case rating = "Rating"
         case dounloadCount = "Downloaded"
         case isClassic = "Classic"
+
+        /// Correctly-spelled alias for ``dounloadCount``.
+        public static var downloadCount: SortOrder { .dounloadCount }
     }
 
     /// Available fields for each tag. 

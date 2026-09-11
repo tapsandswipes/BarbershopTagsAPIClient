@@ -20,7 +20,7 @@ extension TagInfo {
         case recordingMethod = "Recording"
         case youTubeID = "TeachVid"
         case notes = "Notes"
-        case arranger = "Arrenger"
+        case arranger = "Arranger"
         case arrangerWebsite = "ArrWebsite"
         case arrangeYear = "Arranged"
         case sungBy = "SungBy"
@@ -72,6 +72,15 @@ extension VideoInfo {
         case sungBy = "SungBy"
         case singerWebsite = "SungWebsite"
         case postDate = "Posted"
+    }
+}
+
+extension TagInfo.Style {
+    public init(from decoder: Decoder) throws {
+        let raw = try decoder.singleValueContainer().decode(String.self)
+        // Lenient: the site occasionally renames or adds style labels;
+        // an unrecognized value must not fail the entire tag response.
+        self = TagInfo.Style(rawValue: raw.replacingCharacterEntities()) ?? .unknown
     }
 }
 

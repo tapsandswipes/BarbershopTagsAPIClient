@@ -70,7 +70,7 @@ final class BarbershopTagsAPIClientTests: XCTestCase {
         
         let tags = try await sut.getTags(
             matching: .init(term: "Leaves"),
-            respone: .init(
+            response: .init(
                 maxNumberOfResults: 40,
                 resultFields: [
                     .id,
